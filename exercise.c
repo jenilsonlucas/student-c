@@ -1,33 +1,48 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
-int tribonacci(int n, int primeiro, int segundo, int terceiro)
-{
-    if(n == 1) return primeiro;
-    if(n == 2) return primeiro + segundo;
-    if(n == 3) return primeiro + segundo + terceiro;
-    int result ;
-    for(int i = 0; i < n; i++){
-        result = primeiro + segundo + terceiro;
+int potencia(int base, int expoente){
 
-        primeiro = segundo;
-        segundo = terceiro;
-        terceiro = result;
-    }
-
+    if(expoente == 0) return 1;
+    if(expoente == 1) return base;
+   
+    int result = 1;
+    for(int i = 0; i < expoente; i++) result *= base;
 
     return result;
 }
 
+int factorial(int numero)
+{
+    if(numero == 0 || numero == 1) return 1;
+    int result = 1;
+    for(int i = 1; i <= numero; i++){
+        result *= i ; 
+    }
+
+    return result;
+}
+
+double serieRaiz(int n, int x)
+{
+    int term = 1;
+
+    for(int i = 1; i <= n; i++)
+    {
+        if((i % 2) != 0)
+        {
+            term = term + (1.0/potencia(2, i)) * (potencia(x - 1, i) / factorial(i));
+        }else {
+            term = term - (1.0/potencia(2, i)) * (potencia(x - 1, i) / factorial(i));
+        }
+    }
+}
 
 
 int main()
 {
-
-    int tri = tribonacci(7, 1,1,2);
-
-    printf("O valor da sequeencia de tribonacci e %d\n", tri);
-
+    printf("Potencia de 5 ^ 2 = %d", potencia(5, 2));
+    printf("fatorial de 5 = %d\n", factorial(5));
     return 0;
 }
