@@ -1,44 +1,41 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void seqAlternante(int n)
+
+void sequencia()
 {
-    int numeroActual, segmento1, segmento2, altern1, altern2;
-    for(int i = 0; i < n; i++){
-        scanf("%d", &numeroActual);
+    int anterior, atual, proximo;
 
-        if((numeroActual % 2) == 0){
-            ++segmento1;
-            segmento2 = 0;
-            if(segmento1 > 1){
-                altern1++;
-            }
-        }else{
-            ++segmento2;
-            segmento1 = 0;
-            if(segmento2 > 1){
-                altern2++;
-            }
+    printf("digite uma sequecia de numeros inteiros (para sair digite um valor negativo)");
+
+    scanf("%d", &anterior);
+    if(anterior < 0) return;
+
+    scanf("%d", &atual);
+    if(atual < 0) return;
+
+    while(1){
+
+        scanf("%d", &proximo);
+
+        if(proximo < 0) return;
+
+        if(atual != 0 && anterior != 0 && proximo != 0)
+        if(atual > anterior && atual > proximo){
+            printf("segue essa caracterista %d\n", atual);
         }
 
+        anterior = atual;
+        atual = proximo;
+
     }
 
-     if(altern1 <= 1 && altern2 <= 1 && n > 4){
-        printf("Essa n e uma sequencia alternada");
-        return;
-    }
-
-    if((altern1 >= 1 && altern2 == 0) || (altern2 >= 1 && altern1 == 0) || (altern1 >= 1 && altern2 >= 1)){
-        printf("Essa e uma sequencia alternada\n");
-        return;
-    }
-
-    
 }
+
 
 int main()
 {
+    sequencia();
 
-    seqAlternante(9);
     return 0;
 }
