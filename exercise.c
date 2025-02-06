@@ -2,40 +2,25 @@
 #include <stdlib.h>
 
 
-void sequencia()
+float rounded(float number)
 {
-    int anterior, atual, proximo;
+    int inteiro = (int)number;
+    float decimal = number - inteiro;
 
-    printf("digite uma sequecia de numeros inteiros (para sair digite um valor negativo)");
-
-    scanf("%d", &anterior);
-    if(anterior < 0) return;
-
-    scanf("%d", &atual);
-    if(atual < 0) return;
-
-    while(1){
-
-        scanf("%d", &proximo);
-
-        if(proximo < 0) return;
-
-        if(atual != 0 && anterior != 0 && proximo != 0)
-        if(atual > anterior && atual > proximo){
-            printf("segue essa caracterista %d\n", atual);
-        }
-
-        anterior = atual;
-        atual = proximo;
-
-    }
-
+    if(decimal >= 0.0 && decimal <= 0.24)
+        return inteiro + 0.25;
+    if(decimal <= 0.54)
+        return inteiro + 0.55;
+    if(decimal <= 0.74)
+        return inteiro + 0.75;
+    if(decimal <= 0.99)
+        return inteiro + 1.0;
 }
-
 
 int main()
 {
-    sequencia();
+    float n = rounded(1.90);
 
+    printf("the value rounded: %.2f\n", n);
     return 0;
 }
