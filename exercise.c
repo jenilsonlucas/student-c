@@ -1,41 +1,33 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
-
-#define PI 3.14159265358979323846
-#define ERRO 1.0e-18
 
 
-double potencia(double base, int exp){
+int tribonacci(int n, int primeiro, int segundo, int terceiro)
+{
+    if(n == 1) return primeiro;
+    if(n == 2) return primeiro + segundo;
+    if(n == 3) return primeiro + segundo + terceiro;
+    int result ;
+    for(int i = 0; i < n; i++){
+        result = primeiro + segundo + terceiro;
 
-    double result = 1.0;
-    for(int i = 0; i < exp; i++){
-        result *= base;
+        primeiro = segundo;
+        segundo = terceiro;
+        terceiro = result;
     }
+
 
     return result;
 }
-double calculatorPi(){
-    double pi_aprox = 0.0;
-    double termo = 1.0/2.0;
-    int i = 1;
 
 
-    do{
-        termo *= ((2.0 * i - 1) / (2.0 * i)) * (1.0/(2.0*i + 1.0)); //* potencia(1.0/2.0, (2*i+1 ));
-        printf("valor do termo %lf\n", termo);
-        pi_aprox += termo;
-        i++;
-    }while(fabs(6.0 * pi_aprox - PI) <= ERRO);    
-
-    return pi_aprox * 6.0;
-}
 
 int main()
 {
-   printf("\nvalor de pi aproximado %lf\n", calculatorPi());
-   printf("valor de pi %lf\n", PI);
-   printf("valor de erro %lf\n", ERRO);
 
+    int tri = tribonacci(7, 1,1,2);
+
+    printf("O valor da sequeencia de tribonacci e %d\n", tri);
 
     return 0;
 }
