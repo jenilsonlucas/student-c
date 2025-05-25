@@ -1,48 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-int potencia(int base, int expoente){
-
-    if(expoente == 0) return 1;
-    if(expoente == 1) return base;
-   
-    int result = 1;
-    for(int i = 0; i < expoente; i++) result *= base;
-
-    return result;
-}
-
-int factorial(int numero)
+typedef struct
 {
-    if(numero == 0 || numero == 1) return 1;
-    int result = 1;
-    for(int i = 1; i <= numero; i++){
-        result *= i ; 
-    }
+    char titulo[100];
+    char autor[100];
+    int data;
 
-    return result;
-}
+} livro;
 
-double serieRaiz(int n, int x)
+void preencherLivro(livro *l)
 {
-    int term = 1;
+    printf("Digite o titulo do livro:\n");
+    fgets(l->titulo, 100, stdin);
 
-    for(int i = 1; i <= n; i++)
-    {
-        if((i % 2) != 0)
-        {
-            term = term + (1.0/potencia(2, i)) * (potencia(x - 1, i) / factorial(i));
-        }else {
-            term = term - (1.0/potencia(2, i)) * (potencia(x - 1, i) / factorial(i));
-        }
-    }
+    printf("Digite o autor do livro:\n");
+    fgets(l->titulo, 100, stdin);
+
+    printf("Digite a data de publicação do livro:\n");
+    scanf("%d", l->data);
 }
-
 
 int main()
 {
-    printf("Potencia de 5 ^ 2 = %d", potencia(5, 2));
-    printf("fatorial de 5 = %d\n", factorial(5));
+
+    livro *l;
+
+    preencherLivro(l);
+
+    printf("titulo = %s\n", l->titulo);
+    printf("autor = %s\n", l->autor);
+    printf("data = %d\n", l->data);
     return 0;
 }
