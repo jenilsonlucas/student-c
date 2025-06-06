@@ -18,9 +18,8 @@ int main()
         printf("Lista inicializa\n");
     preencher(items, lista);
 
-    int resultado = somaRecursiva(lista);
+    lista = inversaInterativa(lista);
     imprimir(lista);
 
-    printf("Resultado: %d\n", resultado);
     return 0;
 }
