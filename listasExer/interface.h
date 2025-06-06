@@ -26,7 +26,7 @@ Lista *inversaInterativa(Lista *lista);
 
 Lista *inversaRecursiva(Lista *lista, int inicio, int fim);
 
-int findForKey(Lista *lista, Item *x, Item *y);
+int encontrarChaveInserir(Lista *lista, Item x, Item y);
 
 void imprimir(Lista *lista);
 

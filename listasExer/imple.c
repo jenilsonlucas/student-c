@@ -101,12 +101,12 @@ Lista *inversaRecursiva(Lista *lista, int inicio, int fim){
     return inversaRecursiva(lista, inicio + 1, fim - 1);
 }
 
-int findForKey(Lista *lista, Item *x, Item *y){
+int encontrarChaveInserir(Lista *lista, Item x, Item y){
     if(vazia(lista)) return 0;
     
     for(int i = 0; i < lista->nElem; i++){
-        if(lista->items[i].chave == x->chave){
-            lista->items[i] = *y;
+        if(lista->items[i].chave == x.chave){
+            lista->items[i] = y;
             return 1;
         }
     }

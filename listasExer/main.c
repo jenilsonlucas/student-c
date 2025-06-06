@@ -15,13 +15,15 @@ int main()
     Lista *lista;
     Item items[12] = {{1, 2}, {2, 2}, {3, 12}, {4, 4}, {5, 4}};
 
-    // Item x = {2,4}, y = {12, 24};
+    Item x = {2,4};
+    Item y = {12, 24};
     if (inicializarLista(&lista, 3))
         printf("Lista inicializa\n");
     preencher(items, lista);
 
-    lista = inversaRecursiva(lista, 0, lista->nElem - 1);
-    imprimir(lista);
+    if(encontrarChaveInserir(lista, x, y)){
+        imprimir(lista);
+    }
 
     return 0;
 }
