@@ -2,11 +2,6 @@
 #include <stdlib.h>
 #include "interface.h"
 
-typedef struct Lista{
-    Item *items;
-    int nElem;
-    int maxElem;
-}Lista;
 
 int inicializarLista(Lista **lista, int dim)
 {
@@ -93,9 +88,31 @@ Lista *inversaInterativa(Lista *lista){
 
     return lista;
 }
+ 
+Lista *inversaRecursiva(Lista *lista, int inicio, int fim){
+    if(inicio >= fim){
+        return lista;
+    }
 
+    Item item = lista->items[inicio];
+    lista->items[inicio] = lista->items[fim];
+    lista->items[fim] = item;
 
+    return inversaRecursiva(lista, inicio + 1, fim - 1);
+}
 
+int findForKey(Lista *lista, Item *x, Item *y){
+    if(vazia(lista)) return 0;
+    
+    for(int i = 0; i < lista->nElem; i++){
+        if(lista->items[i].chave == x->chave){
+            lista->items[i] = *y;
+            return 1;
+        }
+    }
+
+    return 0;
+}
 
 
 

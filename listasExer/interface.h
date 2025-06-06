@@ -4,7 +4,11 @@ typedef struct Item{
     int valor;
 }Item;
 
-typedef struct Lista Lista;
+typedef struct Lista{
+    Item *items;
+    int nElem;
+    int maxElem;
+}Lista;
 
 int inicializarLista(Lista **lista, int dim);
 
@@ -19,6 +23,10 @@ int inserirElemento(Lista *lista, int pos, Item *item);
 int somaRecursiva(Lista *lista);
 
 Lista *inversaInterativa(Lista *lista);
+
+Lista *inversaRecursiva(Lista *lista, int inicio, int fim);
+
+int findForKey(Lista *lista, Item *x, Item *y);
 
 void imprimir(Lista *lista);
 
