@@ -21,9 +21,10 @@ int main()
         printf("Lista inicializa\n");
     preencher(items, lista);
 
-    if(encontrarChaveInserir(lista, x, y)){
+    if(removerNelementos(lista, 0, 3)){
         imprimir(lista);
     }
 
+    liberar(&lista);
     return 0;
 }

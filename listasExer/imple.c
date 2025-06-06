@@ -24,7 +24,9 @@ int inicializarLista(Lista **lista, int dim)
 }
 
 int realoc(Lista *lista){
+    // printf("%d \n", lista->maxElem);
     lista->items = realloc(lista->items, lista->maxElem * sizeof(Item));
+    
 
     if(lista->items == NULL) return 0;
 
@@ -112,6 +114,25 @@ int encontrarChaveInserir(Lista *lista, Item x, Item y){
     }
 
     return 0;
+}
+
+int removerNelementos(Lista *lista, int pos, int n){
+    if(vazia(lista)) return 0;
+
+    if(pos < 0 || pos > lista->nElem - 1) return 0;
+
+    if(n < 0 || n > lista->nElem - 1) return 0;
+
+    if(pos + n > lista->nElem - 1) return 0;
+
+    for(int i = 0; i < lista->nElem - n; i++){
+        lista->items[pos + i] = lista->items[pos + n + i];
+    }
+
+    lista->nElem = lista->nElem - n;
+    lista->maxElem = lista->maxElem - n;
+
+    return 1;
 }
 
 

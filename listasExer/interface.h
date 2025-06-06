@@ -28,6 +28,8 @@ Lista *inversaRecursiva(Lista *lista, int inicio, int fim);
 
 int encontrarChaveInserir(Lista *lista, Item x, Item y);
 
+int removerNelementos(Lista *lista, int pos, int n);
+
 void imprimir(Lista *lista);
 
 void liberar(Lista **lista);
